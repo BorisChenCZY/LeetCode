@@ -14,17 +14,13 @@ void gen(int left, int right, string cur, vector<string> &ans)
     }
 
 	vector<string> rnt = vector<string>();
-    gen(left - 1, right, cur + "(");
-    gen(left, right - 1, cur + ")");
+    gen(left - 1, right, cur + "(", ans);
+    gen(left, right - 1, cur + ")", ans);
 }
 
 vector<string> generateParenthesis(int n) {
     vector<string> ans = vector<string>();
-    for (string s:gen(n, n, ""))
-    {
-        ans.push_back(s);
-    }
-    
+    gen(n, n, "", ans);
     return ans;
 }
 
